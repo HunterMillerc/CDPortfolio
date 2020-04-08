@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CDPortfolio.Models.CD>
+
+@{ 
+    ViewBag.Title = "CD Portfolio";
+}
+
+<h1 class="text-center">My CD Portfolio</h1>
+<div class="col-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bank</th>
+                <th>Term</th>
+                <th>Rate</th>
+                <th>Purchase Date</th>
+                <th>Initial Depost Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td>No CDs added yet. Add CD to view list of Cds</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (CDPortfolio.Models.CD Cd in Model)
+                {
+                    <tr>
+                        <td>@Cd.Id</td>
+                        <td>@Cd.Bank</td>
+                        <td>@Cd.Term</td>
+                        <td>@Cd.Rate%</td>
+                        <td>@Cd.PurchaseDate.ToShortDateString()</td>
+                        <td>$@Cd.DepositAmt</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<a asp-action="AddCDForm" class="btn btn-primary">Add CD</a>
