@@ -9,7 +9,7 @@
         <div asp-validation-summary="All"></div>
             <label asp-for="Bank">Bank</label>
             <select class="custom-select" asp-for="Bank">
-                <option selected>Please Choose a Bank</option>
+                <option value="">Please Choose a Bank</option>
                 <option value="Altra Federal Credit Union">Altra Federal Credit Union</option>
                 <option value="Synchrony Bank">Synchrony Bank</option>
                 <option value="BMO Harris">BMO Harris</option>
@@ -17,7 +17,7 @@
             </select>
             <label asp-for="Term">Term (Months)</label>
             <select class="custom-select" asp-for="Term">
-                <option selected>Please Choose a Term</option>
+                <option value="">Please Choose a Term</option>
                 <option value="12">12</option>
                 <option value="24">24</option>
                 <option value="36">36</option>
@@ -25,10 +25,10 @@
                 <option value="60">60</option>
             </select>
             <label asp-for="Rate">Rate(%)</label>
-            <input type="text" class="form-control" placeholder="8.00%" asp-for="Rate"/>
+            <input class="form-control" placeholder="8.00%" asp-for="Rate"/>
             <label asp-for="DepositAmt">Deposit Amount</label>
             <div class="dollarSignIcon">
-                <input type="text" class="form-control" placeholder="0.00" asp-for="DepositAmt"/>
+                <input class="form-control" placeholder="0.00" asp-for="DepositAmt"/>
                 <i>$</i>
             </div>
             <label asp-for="PurchaseDate">Purchase Date</label>

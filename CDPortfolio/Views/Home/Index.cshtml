@@ -34,10 +34,10 @@
                         <td>@Cd.Id</td>
                         <td>@Cd.Bank</td>
                         <td>@Cd.Term</td>
-                        <td>@Cd.Rate.ToString("0.00")%</td>
+                        <td>@Cd.Rate?.ToString("0.00")%</td>
                         <td>@Cd.PurchaseDate.ToShortDateString()</td>
                         <td>@Cd.GetMatureDate().ToShortDateString()</td>
-                        <td>$@Cd.DepositAmt.ToString("0.00")</td>
+                        <td>$@Cd.DepositAmt?.ToString("0.00")</td>
                         <td>$@Cd.GetMatureValue().ToString("0.00")</td>
                     </tr>
                 }

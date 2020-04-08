@@ -12,28 +12,32 @@ namespace CDPortfolio.Models
         public string Bank { get; set; }
 
         [Required(ErrorMessage = "Please select a term")]
-        public int Term { get; set; }
+        public int? Term { get; set; }
 
         [Required(ErrorMessage = "Please input a rate")]
-        public double Rate { get; set; }
-
-        [Required(ErrorMessage = "Please select a purchase date")]
-        public DateTime PurchaseDate { get; set; }
+        public double? Rate { get; set; }
 
         [Required(ErrorMessage = "Please input a deposit amount")]
-        public decimal DepositAmt { get; set; }
+        public decimal? DepositAmt { get; set; }
+
+        [DataType(DataType.DateTime, ErrorMessage = "Please select a valid purchase date")]
+        public DateTime PurchaseDate { get; set; }
 
         public static int nextId;
         public int Id { get; set; }
 
         public DateTime GetMatureDate()
         {
-            return PurchaseDate.AddMonths(Term);
+            if (PurchaseDate == null)
+            {
+                return PurchaseDate;
+            }
+            return PurchaseDate.AddMonths(Term ?? 0);
         }
 
         public decimal GetMatureValue()
         {
-            return (decimal)(((double)DepositAmt) * Math.Pow(1 + ((Rate / 1000) * 12), Term));
+            return (decimal)(((double)DepositAmt) * Math.Pow(1 + (((Rate ?? 0) / 1000) * 12), (Term ?? 0)));
         }
     }
 
