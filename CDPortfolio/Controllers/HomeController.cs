@@ -23,8 +23,15 @@ namespace CDPortfolio.Controllers
         [HttpPost]
         public ViewResult AddCDForm(CD response)
         {
-            AddedCDs.AddCD(response);
-            return View("Index", AddedCDs.AddCDresponses);
+            if (ModelState.IsValid)
+            {
+                AddedCDs.AddCD(response);
+                return View("Index", AddedCDs.AddCDresponses);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

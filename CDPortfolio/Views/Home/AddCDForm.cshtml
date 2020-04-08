@@ -6,7 +6,7 @@
 <h1 class="text-center">AddCD</h1>
 <div class="container">
     <form asp-action="AddCDForm" method="post">
-        <div class="form-group">
+        <div asp-validation-summary="All"></div>
             <label asp-for="Bank">Bank</label>
             <select class="custom-select" asp-for="Bank">
                 <option selected>Please Choose a Bank</option>
@@ -15,8 +15,6 @@
                 <option value="BMO Harris">BMO Harris</option>
                 <option value="Wells Fargo">Wells Fargo</option>
             </select>
-        </div>
-        <div class="form-group">
             <label asp-for="Term">Term (Months)</label>
             <select class="custom-select" asp-for="Term">
                 <option selected>Please Choose a Term</option>
@@ -26,22 +24,15 @@
                 <option value="48">48</option>
                 <option value="60">60</option>
             </select>
-        </div>
-        <div class="form-group">
             <label asp-for="Rate">Rate(%)</label>
             <input type="text" class="form-control" placeholder="8.00%" asp-for="Rate"/>
-        </div>
-        <div class="form-group">
             <label asp-for="DepositAmt">Deposit Amount</label>
             <div class="dollarSignIcon">
                 <input type="text" class="form-control" placeholder="0.00" asp-for="DepositAmt"/>
                 <i>$</i>
             </div>
-        </div>
-        <div class="form-group">
             <label asp-for="PurchaseDate">Purchase Date</label>
             <input type="date" class="form-control" placeholder="mm/dd/yyyy" asp-for="PurchaseDate"/>
-        </div>
         <div class="form-row text-center">
             <div class="col-12">
                 <a asp-action="Index" class="btn btn-outline-dark col-4">Cancel</a>

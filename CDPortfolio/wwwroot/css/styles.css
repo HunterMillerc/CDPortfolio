@@ -17,3 +17,11 @@
     padding-left: 25px;
     padding-right: 0;
 }
+
+.validation-summary-errors{
+    color: red;
+}
+
+.validation-summary-valid{
+    display: none;
+}
