@@ -21,23 +21,26 @@ namespace CDPortfolio.Models
         public decimal? DepositAmt { get; set; }
 
         [DataType(DataType.DateTime, ErrorMessage = "Please select a valid purchase date")]
-        public DateTime PurchaseDate { get; set; }
+        [Required(ErrorMessage = "Please select a valid purchase date")]
+        public DateTime? PurchaseDate { get; set; }
 
         public static int nextId;
         public int Id { get; set; }
 
+        public DateTime GetPurchaseDate()
+        {
+            return (DateTime)PurchaseDate;
+        }
+
         public DateTime GetMatureDate()
         {
-            if (PurchaseDate == null)
-            {
-                return PurchaseDate;
-            }
-            return PurchaseDate.AddMonths(Term ?? 0);
+            DateTime pDate = (DateTime)PurchaseDate;
+            return pDate.AddMonths(Term ?? 0);
         }
 
         public decimal GetMatureValue()
         {
-            return (decimal)(((double)DepositAmt) * Math.Pow(1 + (((Rate ?? 0) / 1000) * 12), (Term ?? 0)));
+            return (decimal)(((double)DepositAmt) * Math.Pow((1 + (((Rate ?? 0) / 100) / 365)), (((Term ?? 0) / 12) * 365)));
         }
     }
 
